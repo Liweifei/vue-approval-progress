@@ -1,0 +1,59 @@
+{
+  "name": "vue-approval-progress",
+  "description": "一款优秀的审批进度流程显示插件",
+  "version": "1.0.0",
+  "author": "Liweifei <1195669615@qq.com>",
+  "license": "MIT",
+  "private": false,
+  "main": "dist/vue-approval-progress.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "vue": "^2.5.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Liweifei/vue-approval-progress.git"
+  },
+  "keywords": [
+    "vue",
+    "angular",
+    "react",
+    "steps",
+    "vue-steps",
+    "approval",
+    "vue-approval",
+    "步骤插件",
+    "审批流插件",
+    "流程显示插件",
+    "进度插件",
+    "炫酷进度条",
+    "炫酷审批流",
+    "考勤",
+    "pc端进度条",
+    "pc端审批流"
+  ],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.11",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  }
+}

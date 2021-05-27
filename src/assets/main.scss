@@ -1,0 +1,185 @@
+$mainColor: #4b7df6;
+
+.vue-approval-progress,
+.vue-approval-progress * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.vue-approval-progress {
+  position: relative;
+  min-width: 460px;
+  padding: 0 40px;
+  box-sizing: border-box;
+
+  .stepItem {
+    float: left;
+    width: 100%;
+    position: relative;
+    padding-bottom: 40px;
+
+    &:not(:last-child) {
+      &::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: calc(100% - 48px);
+        top: 44px;
+        left: 19px;
+        background: #6993f8;
+        z-index: 1;
+      }
+    }
+    .itemBox {
+      display: inline-block;
+      width: 100%;
+      text-align: left;
+
+      .iconBox {
+        float: left;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid rgba(75, 125, 246, 0.8);
+        text-align: center;
+        background: rgba(75, 125, 246, 0.15);
+        position: relative;
+
+        i {
+          font-size: 18px;
+          color: $mainColor;
+          line-height: 38px;
+        }
+        .iconLabel{
+          display: inline-block;
+          width: 100%;
+          font-size: 18px;
+          color: $mainColor;
+          line-height: 38px;
+          font-weight: bold;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+      .r {
+        float: left;
+        width: calc(100% - 40px);
+        padding: 0 12px;
+        box-sizing: border-box;
+
+        h2 {
+          width: 100%;
+          margin-top: 6px;
+          font-size: 14px;
+          font-weight: bold;
+          color: #333333;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        .isFinished {
+          margin-top: 13px;
+        }
+        .userInfoBox {
+          float: left;
+          width: 100%;
+          font-size: 14px;
+          color: #333333;
+          margin-top: 12px;
+
+          .nameBox {
+            float: left;
+            width: calc(100% - 134px); //more 20px gap
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            .roleName {
+              padding-right: 10px;
+              margin-right: 10px;
+              border-right: 1px solid #333333;
+            }
+            i {
+              color: $mainColor;
+              font-size: 14px;
+              margin-left: 10px;
+            }
+            .state {
+              font-size: 14px;
+              color: #07c264;
+              margin-left: 12px;
+            }
+          }
+          .time {
+            width: 114px;
+            float: right;
+            font-size: 12px;
+            color: #999999;
+            white-space: nowrap;
+          }
+        }
+        .content {
+          float: left;
+          width: 100%;
+          font-size: 12px;
+          color: #666666;
+          margin-top: 22px;
+          position: relative;
+          word-break: break-all;
+
+          .main {
+            line-height: 22px;
+          }
+          .showBtn {
+            cursor: pointer;
+            color: $mainColor;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+          }
+        }
+        .contentVisible {
+          padding-bottom: 30px;
+          border-bottom: 1px dashed #e6ebf9;
+
+          .showBtn {
+            bottom: 30px;
+          }
+        }
+      }
+
+      //group
+      & + .itemBox {
+        margin-top: 26px;
+
+        .r h2 {
+          display: none;
+        }
+        .iconBox {
+          width: 10px;
+          height: 10px;
+          margin: 14px 0 0 14px;
+          border-radius: 50%;
+          background: #6993f8;
+
+          &::before {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 4px;
+            bottom: 100%;
+            left: 19px;
+            background: #fff;
+            z-index: 1;
+          }
+
+          i {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
