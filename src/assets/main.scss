@@ -1,4 +1,5 @@
 $mainColor: #4b7df6;
+$lineColor: #DEE3F7;
 
 .vue-approval-progress,
 .vue-approval-progress * {
@@ -17,6 +18,7 @@ $mainColor: #4b7df6;
     width: 100%;
     position: relative;
     padding-bottom: 40px;
+    background: #fff;
 
     &:not(:last-child) {
       &::after {
@@ -26,7 +28,7 @@ $mainColor: #4b7df6;
         height: calc(100% - 48px);
         top: 44px;
         left: 19px;
-        background: #6993f8;
+        background: $lineColor;
         z-index: 1;
       }
     }
@@ -50,7 +52,27 @@ $mainColor: #4b7df6;
           color: $mainColor;
           line-height: 38px;
         }
-        .iconLabel{
+        .imgBox {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          background-color: #fff;
+          border-radius: 50%;
+          overflow: hidden;
+
+          @for $i from 1 through 20 {
+            &:nth-child(#{$i}) {
+              margin-left: #{$i * 8-8}px;
+            }
+          }
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .iconLabel {
           display: inline-block;
           width: 100%;
           font-size: 18px;
@@ -72,7 +94,7 @@ $mainColor: #4b7df6;
           width: 100%;
           margin-top: 6px;
           font-size: 14px;
-          font-weight: bold;
+          font-weight: 500;
           color: #333333;
           white-space: nowrap;
           text-overflow: ellipsis;
@@ -109,12 +131,13 @@ $mainColor: #4b7df6;
               font-size: 14px;
               color: #07c264;
               margin-left: 12px;
+              font-weight: bold;
             }
           }
           .time {
-            width: 114px;
+            width: 134px;
             float: right;
-            font-size: 12px;
+            font-size: 14px;
             color: #999999;
             white-space: nowrap;
           }
@@ -148,6 +171,40 @@ $mainColor: #4b7df6;
             bottom: 30px;
           }
         }
+        .markInfo{
+          float: left;
+          width: 100%;
+          text-align: center;
+          margin-top: 40px;
+          position: relative;
+
+          &:before{
+            content: "";
+            display: inline-block;
+            width: 100%;
+            height: 1px;
+            background: #E6EBF9;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          .msg{
+            display: inline-block;
+            padding: 0 20px;
+            color: #FFAE3C;
+            font-size: 14px;
+            background: #fff;
+            position: relative;
+            z-index: 2;
+          }
+        }
+      }
+      @for $i from 2 through 20 {
+        .r#{$i} {
+          padding-left: #{$i*8+4}px;//12-8=4
+        }
       }
 
       //group
@@ -158,11 +215,12 @@ $mainColor: #4b7df6;
           display: none;
         }
         .iconBox {
-          width: 10px;
-          height: 10px;
-          margin: 14px 0 0 14px;
+          width: 8px;
+          height: 8px;
+          margin: 16px 15px 0 15px;
           border-radius: 50%;
-          background: #6993f8;
+          background: $lineColor;
+          border-color: $lineColor;
 
           &::before {
             content: "";

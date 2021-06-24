@@ -1,4 +1,4 @@
-## vue-approval-progress(当前版本 V1.0.0)
+## vue-approval-progress(当前版本 V1.0.1)
 
 一款高效、简洁、功能丰富的审批进度流程显示 pc 端插件
 
@@ -28,6 +28,10 @@ Vue2.x
           {
             title: "发起人",
             icon: "vapfont vap-top_icon4",
+            headportrait: [
+              "https://v3.cn.vuejs.org/logos.png",
+              "https://v3.cn.vuejs.org/logos.png",
+            ],
             iconLabel: "发",
             handlerInfo: [
               {
@@ -43,6 +47,7 @@ Vue2.x
         [
           {
             title: "或签",
+            headportrait: ["https://v3.cn.vuejs.org/logos.png"],
             handlerInfo: [
               {
                 name: "xxx",
@@ -73,6 +78,7 @@ Vue2.x
         [
           {
             title: "会签",
+            headportrait: ["https://v3.cn.vuejs.org/logos.png"],
             handlerInfo: [
               {
                 name: "xxx",
@@ -81,8 +87,7 @@ Vue2.x
                 approvalType: "同意",
               },
             ],
-            desc:
-              "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccdddddddddddddddddd",
+            desc: "",
           },
           {
             title: "",
@@ -98,6 +103,8 @@ Vue2.x
               },
             ],
             desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+            mark: "第2次审批",
+            markColor:"red"
           },
         ],
         [
@@ -115,7 +122,7 @@ Vue2.x
                 name: "xxx",
                 post: "副总裁",
                 time: "2021-03-15  20:42:00",
-                approvalType: "",
+                approvalType: "抄送",
                 icon: "vapfont vap-gou",
               },
             ],
@@ -144,7 +151,9 @@ Vue2.x
 | 属性        | 类型   | 说明                                                                                                         | 是否默认 | 默认值                                             |
 | ----------- | ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------- |
 | title       | String | 当条数据的 title（注意有多个处理人的情况不展示，参考'或签/会签'样式）                                        |          |                                                    |
-| desc        | String | 当条数据的文字说明展示                                                                                       |          |                                                    |
+| desc        | String | 当条数据的文字说明展示                                                                                       |          |
+| mark        | String | 当存在 mark 值时，会显示额外的提示信息，如图"第二次审批"                                                     |          |
+| markColor   | String | mark 字体颜色                                                                                                | true     | #FFAE3C                                            |
 | icon        | String | 当条数据的图标展示（注意有多个处理人的情况不展示，参考'或签/会签'样式），若存在 iconLabel 则不展示 icon 图标 | true     | 第一条数据默认人头，结尾数据默认打勾，其它默认印章 |
 | iconLabel   | String | 当条数据的图标替换成文字（注意有多个处理人的情况不展示，参考'或签/会签'样式；注意传此则不展示 icon）         |          |
 | handlerInfo | Array  | 当条数据的处理人信息，可传多条(下方详细说明)                                                                 |          |                                                    |
@@ -163,10 +172,9 @@ Vue2.x
 
 ## API
 
-| 函数名 | 说明     | 参数格式 | 调用示例                                      |
-| ------ | -------- | -------- | --------------------------------------------- |
-| init   | 手动更新 |          | this.$refs.vap.init();|
-
+| 函数名 | 说明     | 参数格式 | 调用示例               |
+| ------ | -------- | -------- | ---------------------- |
+| init   | 手动更新 |          | this.$refs.vap.init(); |
 
 ## Other
 

@@ -1,199 +1,127 @@
 <template>
-  <div class="vue-approval-progress">
-    <div class="stepItem" v-for="(list, lIndex) in stepList" :key="lIndex">
-      <div class="itemBox" v-for="(item, index) in list" :key="index">
-        <div class="iconBox" @click="id = '123'">
-          <span class="iconLabel" :title="item.iconLabel" v-if="item.iconLabel" v-text="item.iconLabel"></span>
-          <i
-            v-else
-            :class="[
-              item.icon
-                ? item.icon
-                : lIndex === 0
-                ? 'vapfont vap-top_icon4'
-                : item.last
-                ? 'vapfont vap-gou'
-                : 'vapfont vap-hetong',
-            ]"
-          ></i>
-        </div>
-        <div class="r">
-          <h2 :class="{ isFinished: item.last }">{{ item.title }}</h2>
-          <div
-            class="userInfoBox"
-            v-for="(infoItem, iIndex) in item.handlerInfo"
-            :key="iIndex"
-          >
-            <div class="nameBox">
-              <span class="roleName">{{ infoItem.post }}</span>
-              <span class="name">{{ infoItem.name }}</span>
-              <i :class="infoItem.icon" v-if="infoItem.icon"></i>
-              <span
-                class="state"
-                :style="{
-                  color: infoItem.approvalTypeColor,
-                }"
-                >{{ infoItem.approvalType }}</span
-              >
-            </div>
-            <span
-              class="time"
-              :style="{
-                color: infoItem.timeColor,
-              }"
-              >{{ infoItem.time }}</span
-            >
-          </div>
-          <div
-            class="content"
-            :class="{ contentVisible: item.show && item.haveBtn }"
-            v-if="!item.last && item.desc"
-          >
-            <p class="main" :keyindex="lIndex + '-' + index" ref="fillText">
-              {{ item.desc }}
-            </p>
-            <span class="showBtn" v-if="item.haveBtn" @click="showContent(item)">
-              {{ item.show ? "收起" : "展开" }}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="app">
+    <vue-approval-progress :data-list="dataList"></vue-approval-progress>
   </div>
 </template>
 
 <script>
 export default {
-  name: "vue-approval-progress",
+  name: "app",
   data() {
     return {
-      stepList: [],
-    };
-  },
-  props: {
-    dataList: {
-      type: Array,
-      default: () => {
-        return [];
-      },
-    },
-    maxRow: {
-      type: Number,
-      default: 2,
-    },
-    overVisible: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  watch: {
-    dataList: {
-      handler() {
-        this.init();
-      },
-      immediate: true,
-    },
-    maxRow: {
-      handler() {
-        this.init();
-      }
-    },
-    overVisible: {
-      handler() {
-        this.init();
-      }
-    },
-  },
-  methods: {
-    init() {
-      this.stepList = JSON.parse(JSON.stringify(this.dataList));
-      this.formatData();
-    },
-    formatDom() {
-      const fliterTextDom = this.$refs.fillText;
-      if (!fliterTextDom) return;
-      const compareH = this.maxRow * 22;
-      fliterTextDom.forEach((item) => {
-        const key = item.getAttribute("keyindex").split("-");
-        const io = item.scrollHeight > compareH;
-        let stepList = this.stepList[key[0]][key[1]];
-        Object.assign(stepList, {
-          backup: stepList.desc,
-          lh: stepList.desc.length,
-          haveBtn: io,
-          show: io ? false : true,
-          ellipsisLh: 6,
-        });
-        if (io) {
-          this.initRowText(item, key);
-        }
-      });
-    },
-    initRowText(dom, key) {
-      let current = this.stepList[key[0]][key[1]];
-      const compareH = this.maxRow * 22;
-      const desc = current.desc;
-      if (dom.scrollHeight > compareH) {
-        current.lh--;
-        current.desc = desc.substring(0, current.lh);
-        this.$nextTick(() => {
-          this.initRowText(dom, key);
-        });
-      } else {
-        this.addEllipsis(current);
-      }
-    },
-    addEllipsis(current) {
-      const { ellipsisLh, desc } = current;
-      if (ellipsisLh <= 0) {
-        //截取的长度减完后加上省略号
-        current.desc = desc.substring(0, current.lh) + "...";
-      } else {
-        const w = desc.substr(-1, 1);
-        const lastWL = this.getWL(w); //获取最后一个字符的长度
-        current.ellipsisLh -= lastWL; //减去相同unicode长度的字符保证长度一致
-        current.lh--; //更新当前字符串截取字符串的长度
-        current.desc = desc.substring(0, current.lh); //更新内容
-        this.addEllipsis(current);
-      }
-    },
-    getWL(str) {
-      //获取文字长度，英文1，中文2
-      let realLength = 0,
-        len = str.length,
-        charCode = -1;
-      for (let i = 0; i < len; i++) {
-        charCode = str.charCodeAt(i);
-        realLength += charCode >= 0 && charCode <= 128 ? 1 : 2;
-      }
-      return realLength;
-    },
-    formatData() {
-      //格式化参数
-      let stepList = this.stepList;
-      this.overVisible &&
-        stepList.length > 0 &&
-        stepList.push([
+      dataList: [
+        [
           {
-            title: "结束",
-            handlerInfo: [],
-            last: true,
+            title: "发起人",
+            icon: "vapfont vap-top_icon4",
+            headportrait: [
+              "https://v3.cn.vuejs.org/logos.png",
+              "https://v3.cn.vuejs.org/logos.png",
+            ],
+            iconLabel: "发",
+            handlerInfo: [
+              {
+                name: "xxx",
+                post: "UI设计师",
+                approvalType: "",
+              },
+            ],
+            desc:
+              "转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！",
           },
-        ]);
-      this.$nextTick(() => {
-        this.formatDom();
-      });
-    },
-    showContent(item) {
-      const backup = item.desc;
-      item.show = !item.show;
-      item.desc = item.backup;
-      item.backup = backup;
-    },
+        ],
+        [
+          {
+            title: "或签",
+            headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+            handlerInfo: [
+              {
+                name: "xxx",
+                post: "部门主管",
+                time: "2021-03-15  20:42:00",
+                approvalType: "同意",
+              },
+            ],
+            desc:
+              "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccdddddddddddddddddd",
+          },
+          {
+            title: "",
+            handlerInfo: [
+              {
+                name: "xxx",
+                post: "商务主管",
+                time: "2021-03-15  20:42:00",
+                approvalType: "拒绝",
+                approvalTypeColor: "red",
+                timeColor: "red",
+                stepList: "red",
+              },
+            ],
+            desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+          },
+        ],
+        [
+          {
+            title: "会签",
+            headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+            handlerInfo: [
+              {
+                name: "xxx",
+                post: "财务主管",
+                time: "2021-03-15  20:42:00",
+                approvalType: "同意",
+              },
+            ],
+            desc: "",
+          },
+          {
+            title: "",
+            handlerInfo: [
+              {
+                name: "xxx",
+                post: "行政主管",
+                time: "2021-03-15  20:42:00",
+                approvalType: "拒绝",
+                approvalTypeColor: "red",
+                timeColor: "red",
+                stepList: "red",
+              },
+            ],
+            desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+            mark: "第2次审批",
+            markColor:"red"
+          },
+        ],
+        [
+          {
+            title: "抄送",
+            handlerInfo: [
+              {
+                name: "xxx",
+                post: "总裁",
+                time: "2021-03-15  20:42:00",
+                approvalType: "",
+                icon: "vapfont vap-gou",
+              },
+              {
+                name: "xxx",
+                post: "副总裁",
+                time: "2021-03-15  20:42:00",
+                approvalType: "抄送",
+                icon: "vapfont vap-gou",
+              },
+            ],
+            desc: "",
+          },
+        ],
+      ],
+    };
   },
 };
 </script>
 
 <style lang="scss">
-@import "./assets/main.scss";
+.app {
+}
 </style>

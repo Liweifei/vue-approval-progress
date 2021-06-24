@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import "@vapfont/iconfont.css";
+
+import vpa from "../lib/index";
+Vue.use(vpa)
 
 new Vue({
   el: '#app',
