@@ -178,17 +178,18 @@ $lineColor: #dee3f7;
           text-align: center;
           margin-top: 40px;
           position: relative;
+          line-height: 1;
 
           &:before {
             content: "";
             display: inline-block;
             width: 100%;
-            height: 1px;
+            height: 2px;
             background: #e6ebf9;
             position: absolute;
             left: 0;
             top: 50%;
-            transform: translateY(-50%);
+            margin-top: -1px;
           }
 
           .msg {
