@@ -1,5 +1,5 @@
 $mainColor: #4b7df6;
-$lineColor: #DEE3F7;
+$lineColor: #dee3f7;
 
 .vue-approval-progress,
 .vue-approval-progress * {
@@ -12,6 +12,7 @@ $lineColor: #DEE3F7;
   min-width: 460px;
   padding: 0 40px;
   box-sizing: border-box;
+  white-space: normal !important;
 
   .stepItem {
     float: left;
@@ -171,29 +172,29 @@ $lineColor: #DEE3F7;
             bottom: 30px;
           }
         }
-        .markInfo{
+        .markInfo {
           float: left;
           width: 100%;
           text-align: center;
           margin-top: 40px;
           position: relative;
 
-          &:before{
+          &:before {
             content: "";
             display: inline-block;
             width: 100%;
             height: 1px;
-            background: #E6EBF9;
+            background: #e6ebf9;
             position: absolute;
             left: 0;
             top: 50%;
             transform: translateY(-50%);
           }
 
-          .msg{
+          .msg {
             display: inline-block;
             padding: 0 20px;
-            color: #FFAE3C;
+            color: #ffae3c;
             font-size: 14px;
             background: #fff;
             position: relative;
@@ -203,7 +204,7 @@ $lineColor: #DEE3F7;
       }
       @for $i from 2 through 20 {
         .r#{$i} {
-          padding-left: #{$i*8+4}px;//12-8=4
+          padding-left: #{$i * 8+4}px; //12-8=4
         }
       }
 
