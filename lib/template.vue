@@ -31,12 +31,7 @@
             ]"
           ></i>
         </div>
-        <div
-          class="r"
-          :class="
-            Array.isArray(item.headportrait) ? `r${item.headportrait.length}` : null
-          "
-        >
+        <div class="r" :class="item.headportraitLh ? `r${item.headportraitLh}` : null">
           <h2 :class="{ isFinished: item.last }">{{ item.title }}</h2>
           <div
             class="userInfoBox"
@@ -76,7 +71,7 @@
             </span>
           </div>
           <div class="markInfo" v-if="item.mark">
-            <span class="msg" :style="{color:item.markColor}">{{item.mark}}</span>
+            <span class="msg" :style="{ color: item.markColor }">{{ item.mark }}</span>
           </div>
         </div>
       </div>
@@ -207,6 +202,19 @@ export default {
             last: true,
           },
         ]);
+      stepList = stepList.map((list) => {
+        let rs = list;
+        if (list.length > 1) {
+          let headportrait = [];
+          rs.forEach((item) => {
+            Array.isArray(item.headportrait) && headportrait.push(...item.headportrait);
+          });
+          rs = rs.map((item, index) => {
+            item.headportraitLh = headportrait.length;
+            item.headportrait = index === 0 ? headportrait : null;
+          });
+        }
+      });
       this.$nextTick(() => {
         this.formatDom();
       });
@@ -218,7 +226,6 @@ export default {
       item.backup = backup;
     },
     imgOnError(item, index) {
-      console.log(item);
       Array.isArray(item.headportrait) && item.headportrait.splice(index, 1, ImgBase64);
     },
   },

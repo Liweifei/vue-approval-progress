@@ -224,6 +224,7 @@ $lineColor: #dee3f7;
           border-radius: 50%;
           background: $lineColor;
           border-color: $lineColor;
+          box-sizing: content-box;
 
           &::before {
             content: "";
