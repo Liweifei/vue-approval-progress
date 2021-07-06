@@ -32,7 +32,7 @@ export default {
         [
           {
             title: "或签",
-            headportrait: ["https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png"],
+            headportrait: ["https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png",null],
             handlerInfo: [
               {
                 name: "xxx",

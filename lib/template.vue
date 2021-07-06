@@ -9,7 +9,7 @@
               v-for="(imgItem, imgIndex) in item.headportrait"
               :key="imgIndex"
             >
-              <img :src="imgItem" @error="imgOnError(item, imgIndex)" />
+              <img :src="imgItem?imgItem:imgOnError(item, imgIndex)" @error="imgOnError(item, imgIndex)" />
             </div>
           </template>
           <span
