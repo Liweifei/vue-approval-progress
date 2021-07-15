@@ -60,12 +60,34 @@ export default {
             ],
             desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
           },
+          {
+            title: "",
+            headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+            handlerInfo: [
+              {
+                name: "xxx",
+                post: "商务主管",
+                time: "2021-03-15  20:42:00",
+                approvalType: "拒绝",
+                approvalTypeColor: "red",
+                timeColor: "red",
+                stepList: "red",
+              },
+            ],
+            desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+          },
         ],
         [
           {
             title: "会签",
             headportrait: ["https://v3.cn.vuejs.org/logos.png"],
             handlerInfo: [
+              {
+                name: "xxx",
+                post: "财务主管",
+                time: "2021-03-15  20:42:00",
+                approvalType: "同意",
+              },
               {
                 name: "xxx",
                 post: "财务主管",

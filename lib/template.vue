@@ -1,8 +1,8 @@
 <template>
   <div class="vue-approval-progress">
-    <div class="stepItem" v-for="(list, lIndex) in stepList" :key="lIndex">
-      <div class="itemBox" v-for="(item, index) in list" :key="index">
-        <div class="iconBox">
+    <div class="stepItem" :class="{mulStep:list.length>1}" v-for="(list, lIndex) in stepList" :key="lIndex">
+      <div class="itemBox" :class="!item.last && !item.desc?'noMsg':null" v-for="(item, index) in list" :key="index">
+        <div class="iconBox" :class="{isImg:Array.isArray(item.headportrait)}">
           <template v-if="Array.isArray(item.headportrait)">
             <div
               class="imgBox"

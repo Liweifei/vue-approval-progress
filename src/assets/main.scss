@@ -18,7 +18,7 @@ $lineColor: #dee3f7;
     float: left;
     width: 100%;
     position: relative;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     background: #fff;
 
     &:not(:last-child) {
@@ -34,19 +34,20 @@ $lineColor: #dee3f7;
       }
     }
     .itemBox {
-      display: inline-block;
+      float: left;
       width: 100%;
       text-align: left;
 
       .iconBox {
         float: left;
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         border: 1px solid rgba(75, 125, 246, 0.8);
         text-align: center;
         background: rgba(75, 125, 246, 0.15);
         position: relative;
+        box-sizing: border-box;
 
         i {
           font-size: 18px;
@@ -85,6 +86,14 @@ $lineColor: #dee3f7;
           text-overflow: ellipsis;
         }
       }
+      .isImg {
+        border: none;
+
+        .imgBox {
+          border: 1px solid #f8f9fd;
+          box-sizing: border-box;
+        }
+      }
       .r {
         float: left;
         width: calc(100% - 40px);
@@ -109,7 +118,7 @@ $lineColor: #dee3f7;
           width: 100%;
           font-size: 14px;
           color: #333333;
-          margin-top: 12px;
+          margin-top: 14px;
 
           .nameBox {
             float: left;
@@ -147,8 +156,8 @@ $lineColor: #dee3f7;
           float: left;
           width: 100%;
           font-size: 12px;
-          color: #666666;
-          margin-top: 22px;
+          color: #8B8E94;
+          margin-top: 14px;
           position: relative;
           word-break: break-all;
 
@@ -166,18 +175,18 @@ $lineColor: #dee3f7;
           }
         }
         .contentVisible {
-          padding-bottom: 30px;
-          border-bottom: 1px dashed #e6ebf9;
+          // padding-bottom: 20px;
+          // border-bottom: 1px dashed #e6ebf9;
 
-          .showBtn {
-            bottom: 30px;
-          }
+          // .showBtn {
+          //   bottom: 20px;
+          // }
         }
         .markInfo {
           float: left;
           width: 100%;
           text-align: center;
-          margin-top: 40px;
+          margin-top: 30px;
           position: relative;
           line-height: 1;
 
@@ -194,7 +203,7 @@ $lineColor: #dee3f7;
           }
 
           .msg {
-            display: inline-block;
+            display: inline;
             padding: 0 20px;
             color: #ffae3c;
             font-size: 14px;
@@ -212,7 +221,7 @@ $lineColor: #dee3f7;
 
       //group
       & + .itemBox {
-        margin-top: 26px;
+        margin-top: 4px;
 
         .r h2 {
           display: none;
@@ -241,6 +250,26 @@ $lineColor: #dee3f7;
             display: none;
           }
         }
+      }
+    }
+  }
+
+  .mulStep {
+    .itemBox:not(:last-child) {
+      .content {
+        padding-bottom: 20px;
+        border-bottom: 1px dashed #e6ebf9;
+
+        .showBtn{
+          bottom: 20px;
+        }
+      }
+    }
+    .noMsg{
+      .userInfoBox:last-child{
+        padding-bottom: 30px;
+        margin-bottom: 10px;
+        border-bottom: 1px dashed #e6ebf9;
       }
     }
   }
