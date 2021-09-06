@@ -1,4 +1,4 @@
-## vue-approval-progress(当前版本 V1.1.0)
+## vue-approval-progress(当前版本 V2.0.0)
 
 一款高效、简洁、功能丰富的审批进度流程显示 pc 端插件
 
@@ -22,147 +22,218 @@ Vue2.x
 ```javascript
 	<vue-approval-progress :data-list="dataList"></vue-approval-progress>
 
-	data:(){
-		dataList:[
-        [
-          {
-            title: "发起人",
-            icon: "vapfont vap-top_icon4",
-            headportrait: [
-              "https://v3.cn.vuejs.org/logos.png",
-              "https://v3.cn.vuejs.org/logos.png",
-            ],
-            iconLabel: "发",
-            handlerInfo: [
+	data() {
+    return {
+      dataList: [
+        {
+          title: "x",
+          list: [
+            [
               {
-                name: "xxx",
-                post: "UI设计师",
-                approvalType: "",
+                title: "发起人",
+                icon: "vapfont vap-top_icon4",
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                iconLabel: "发",
+                handlerInfo: [
+                  {
+                    name: "xxx",
+                    prefix: "审批人",
+                    post: "UI设计师",
+                    time: "2021-03-15  20:42:00",
+                    approvalType: "",
+                  },
+                ],
+                descPrefixColor:"red",
+                descColor:"red",
+                descPrefix:"发起说明",
+                desc:
+                  "转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！",
               },
             ],
-            desc:
-              "转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！",
-          },
-        ],
-        [
-          {
-            title: "或签",
-            headportrait: ["https://v3.cn.vuejs.org/logos.png"],
-            handlerInfo: [
+          ],
+        },
+        {
+          title: "",
+          list: [
+            [
               {
-                name: "xxx",
-                post: "部门主管",
-                time: "2021-03-15  20:42:00",
-                approvalType: "同意",
+                title: "",
+                headportrait: [
+                  "http://wework.qpic.cn/bizmail/yEeLOMJgibZwIUJQXyfdyAaLFIgVjFUzl78HdIJ2eFelFk3hMroghMQ/100",
+                  // "http://wework.qpic.cn/bizmail/wM9IumlQibQ6o3epyIZGh3P0VriargcE46pBYL82GqiauxJvF6TbQAgHw/100",
+                  // null,
+                ],
+                handlerInfo: [
+                  {
+                    name: "xxx",
+                    prefix: "审批人",
+                    post: "部门主管",
+                    time: "2021-03-15  20:42:00",
+                    approvalType: "同意",
+                  },
+                ],
+                descPrefix:"审批意见",
+                desc:
+                  "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccdddddddddddddddddd",
+              },
+              {
+                title: "",
+                headportrait: [
+                  "http://wework.qpic.cn/bizmail/yEeLOMJgibZwIUJQXyfdyAaLFIgVjFUzl78HdIJ2eFelFk3hMroghMQ/100",
+                ],
+                handlerInfo: [
+                  {
+                    name: "xxx",
+                    prefix: "审批人",
+                    post: "商务主管",
+                    time: "2021-03-15  20:42:00",
+                    approvalType: "拒绝",
+                    approvalTypeColor: "red",
+                    timeColor: "red",
+                    stepList: "red",
+                  },
+                ],
+                descPrefix:"审批意见",
+                desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+              },
+              {
+                title: "",
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                handlerInfo: [
+                  {
+                    name: "xxx",
+                    prefix: "审批人",
+                    post: "商务主管",
+                    time: "2021-03-15  20:42:00",
+                    approvalType: "拒绝",
+                    approvalTypeColor: "red",
+                    timeColor: "red",
+                    stepList: "red",
+                  },
+                ],
+                descPrefix:"审批意见",
+                desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
               },
             ],
-            desc:
-              "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccdddddddddddddddddd",
-          },
-          {
-            title: "",
-            handlerInfo: [
+            [
               {
-                name: "xxx",
-                post: "商务主管",
-                time: "2021-03-15  20:42:00",
-                approvalType: "拒绝",
-                approvalTypeColor: "red",
-                timeColor: "red",
-                stepList: "red",
+                title: "会签",
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                handlerInfo: [
+                  {
+                    name: "xxx",
+                    prefix: "财务主管",
+                    time: "2021-03-15  20:42:00",
+                    approvalType: "同意",
+                  },
+                  {
+                    name: "xxx",
+                    prefix: "财务主管",
+                    time: "2021-03-15  20:42:00",
+                    approvalType: "同意",
+                  },
+                ],
+                descPrefix:"审批意见",
+                desc: "同意同意",
+              },
+              {
+                title: "",
+                handlerInfo: [
+                  {
+                    name: "xxx",
+                    prefix: "行政主管",
+                    time: "2021-03-15  20:42:00",
+                    approvalType: "拒绝",
+                    approvalTypeColor: "red",
+                    timeColor: "red",
+                    stepList: "red",
+                  },
+                ],
+                descPrefix:"审批意见",
+                desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+                mark: "第2次审批",
+                markColor: "red",
               },
             ],
-            desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
-          },
-        ],
-        [
-          {
-            title: "会签",
-            headportrait: ["https://v3.cn.vuejs.org/logos.png"],
-            handlerInfo: [
+            [
               {
-                name: "xxx",
-                post: "财务主管",
-                time: "2021-03-15  20:42:00",
-                approvalType: "同意",
+                title: "抄送人",
+                sameLineTime:true,
+                // icon: "vapfont vap-gou2",
+                // headportrait: ["https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png"],
+                handlerInfo: [
+                  {
+                    name: "xxx",
+                    post: "总裁",
+                    // prefix: "总裁",
+                    time: "2021-03-15  20:42:00",
+                    // approvalType: "",
+                    // icon: "vapfont vap-gou2",
+                  },
+                  {
+                    name: "xxx",
+                    post: "副总裁",
+                    // prefix: "副总裁",
+                    time: "2021-03-15  20:42:00",
+                    // approvalType: "抄送",
+                    // icon: "vapfont vap-gou",
+                  },
+                ],
+                descPrefix:"审批意见",
+                desc: "",
               },
             ],
-            desc: "",
-          },
-          {
-            title: "",
-            handlerInfo: [
-              {
-                name: "xxx",
-                post: "行政主管",
-                time: "2021-03-15  20:42:00",
-                approvalType: "拒绝",
-                approvalTypeColor: "red",
-                timeColor: "red",
-                stepList: "red",
-              },
-            ],
-            desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
-            mark: "第2次审批",
-            markColor:"red"
-          },
-        ],
-        [
-          {
-            title: "抄送",
-            handlerInfo: [
-              {
-                name: "xxx",
-                post: "总裁",
-                time: "2021-03-15  20:42:00",
-                approvalType: "",
-                icon: "vapfont vap-gou",
-              },
-              {
-                name: "xxx",
-                post: "副总裁",
-                time: "2021-03-15  20:42:00",
-                approvalType: "抄送",
-                icon: "vapfont vap-gou",
-              },
-            ],
-            desc: "",
-          },
-        ],
-      ]
-	}
+          ],
+        },
+      ],
+    };
+  }
 
 ```
 
-## ui 效果图
+## V1.x 版本 ui 效果图(请使用 1.1.0)
 
 ![效果图](./demo.jpg)
 
+## V2.x 版本 ui 效果图
+
+![效果图](./demo2.jpg)
+
 ## Attribute
 
-| 属性         | 类型                  | 说明                     | 默认(默认值) | 是否必传 |
-| ------------ | --------------------- | ------------------------ | ------------ | -------- |
-| data-list    | Array（**二维数组**） | 流程数据源(下方详细说明) | true([])     | FALSE    |
-| max-row      | Number                | 文字超过多少行显示省略号 | true(2)      | FALSE    |
-| over-visible | Boolean               | 数据默认添加结束项       | true(true)   | FALSE    |
+| 属性         | 类型    | 说明                     | 默认(默认值) | 是否必传 |
+| ------------ | ------- | ------------------------ | ------------ | -------- |
+| data-list    | Array   | 流程数据源(下方详细说明) | true([])     | FALSE    |
+| max-row      | Number  | 文字超过多少行显示省略号 | true(5)      | FALSE    |
+| over-visible | Boolean | 数据默认添加结束项       | true(true)   | FALSE    |
 
 ## data-list
 
-| 属性        | 类型   | 说明                                                                                                         | 是否默认 | 默认值                                             |
-| ----------- | ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------- |
-| title       | String | 当条数据的 title（注意有多个处理人的情况不展示，参考'或签/会签'样式）                                        |          |                                                    |
-| desc        | String | 当条数据的文字说明展示                                                                                       |          |
-| headportrait        | Array | 头像显示，当存在 headportrait 值时，会优先于label和icon的显示                                                     |          |
-| mark        | String | 当存在 mark 值时，会显示额外的提示信息，如图"第二次审批"                                                     |          |
-| markColor   | String | mark 字体颜色                                                                                                | true     | #FFAE3C                                            |
-| icon        | String | 当条数据的图标展示（注意有多个处理人的情况不展示，参考'或签/会签'样式），若存在 iconLabel 则不展示 icon 图标 | true     | 第一条数据默认人头，结尾数据默认打勾，其它默认印章 |
-| iconLabel   | String | 当条数据的图标替换成文字（注意有多个处理人的情况不展示，参考'或签/会签'样式；注意传此则不展示 icon）         |          |
-| handlerInfo | Array  | 当条数据的处理人信息，可传多条(下方详细说明)                                                                 |          |                                                    |
+| 属性  | 类型               | 说明                               | 是否默认 | 默认值 |
+| ----- | ------------------ | ---------------------------------- | -------- | ------ |
+| title | String             | 当前流程的 title，如图"第一次审批" |          |        |
+| list  | Array （二维数组） | 当前流程数据源(下方详细说明)       |          |
+
+## list
+
+| 属性            | 类型   | 说明                                                                                                         | 是否默认 | 默认值                                             |
+| --------------- | ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------- |
+| title           | String | 当条数据的 title（注意有多个处理人的情况不展示，参考'或签/会签'样式）                                        |          |                                                    |
+| sameLineTime    | String | 当条数据的时间是否和用户信息展示在同一行                                                                     |          |                                                    |
+| descPrefix      | String | 当条数据的文字说明前缀                                                                                       | true     | 备注说明                                           |
+| descPrefixColor | String | 当条数据的文字说明前缀字体颜色                                                                               | true     | #424675                                            |
+| desc            | String | 当条数据的文字说明展示                                                                                       |          |
+| descColor       | String | 当条数据的文字说明字体颜色                                                                                   | true     | #424675                                            |
+| headportrait    | Array  | 头像显示，当存在 headportrait 值时，会优先于 label 和 icon 的显示                                            |          |                                                    |
+| icon            | String | 当条数据的图标展示（注意有多个处理人的情况不展示，参考'或签/会签'样式），若存在 iconLabel 则不展示 icon 图标 | true     | 第一条数据默认人头，结尾数据默认打勾，其它默认印章 |
+| iconLabel       | String | 当条数据的图标替换成文字（注意有多个处理人的情况不展示，参考'或签/会签'样式；注意传此则不展示 icon）         |          |
+| handlerInfo     | Array  | 当条数据的处理人信息，可传多条(下方详细说明)                                                                 |          |                                                    |
 
 ## handlerInfo
 
 | 属性              | 类型   | 说明                     | 是否默认 | 默认值  |
 | ----------------- | ------ | ------------------------ | -------- | ------- |
+| prefix            | String | 处理人文字前缀           |          |         |
 | name              | String | 处理人文字说明           |          |         |
 | post              | String | 处理人职务               |          |         |
 | time              | String | 处理时间                 |          |         |

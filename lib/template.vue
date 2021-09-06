@@ -1,77 +1,116 @@
 <template>
   <div class="vue-approval-progress">
-    <div class="stepItem" :class="{mulStep:list.length>1}" v-for="(list, lIndex) in stepList" :key="lIndex">
-      <div class="itemBox" :class="!item.last && !item.desc?'noMsg':null" v-for="(item, index) in list" :key="index">
-        <div class="iconBox" :class="{isImg:Array.isArray(item.headportrait)}">
-          <template v-if="Array.isArray(item.headportrait)">
-            <div
-              class="imgBox"
-              v-for="(imgItem, imgIndex) in item.headportrait"
-              :key="imgIndex"
-            >
-              <img :src="imgItem?imgItem:imgOnError(item, imgIndex)" @error="imgOnError(item, imgIndex)" />
-            </div>
-          </template>
-          <span
-            class="iconLabel"
-            :title="item.iconLabel"
-            v-else-if="item.iconLabel"
-            v-text="item.iconLabel"
-          ></span>
-          <i
-            v-else
-            :class="[
-              item.icon
-                ? item.icon
-                : lIndex === 0
-                ? 'vapfont vap-top_icon4'
-                : item.last
-                ? 'vapfont vap-gou'
-                : 'vapfont vap-hetong',
-            ]"
-          ></i>
-        </div>
-        <div class="r" :class="item.headportraitLh ? `r${item.headportraitLh}` : null">
-          <h2 :class="{ isFinished: item.last }">{{ item.title }}</h2>
+    <div class="stepList" v-for="(stepList, sIndex) in stepList" :key="'s' + sIndex">
+      <div class="markInfo">
+        <span class="msg">第{{ sIndex + 1 }}次审批</span>
+      </div>
+      <div
+        class="stepItem"
+        :class="{ mulStep: list.length > 1 }"
+        v-for="(list, lIndex) in stepList.list"
+        :key="'k' + sIndex + lIndex"
+      >
+        <div
+          class="itemBox"
+          :class="!item.last && !item.desc ? 'noMsg' : null"
+          v-for="(item, index) in list"
+          :key="index"
+        >
           <div
-            class="userInfoBox"
-            v-for="(infoItem, iIndex) in item.handlerInfo"
-            :key="iIndex"
+            class="iconBox"
+            :class="{
+              isImg: Array.isArray(item.headportrait) && item.headportrait.length > 0,
+            }"
           >
-            <div class="nameBox">
-              <span class="roleName">{{ infoItem.post }}</span>
-              <span class="name">{{ infoItem.name }}</span>
-              <i :class="infoItem.icon" v-if="infoItem.icon"></i>
+            <template
+              v-if="Array.isArray(item.headportrait) && item.headportrait.length > 0"
+            >
+              <div
+                class="imgBox"
+                v-for="(imgItem, imgIndex) in item.headportrait"
+                :key="imgIndex"
+              >
+                <img
+                  :src="imgItem ? imgItem : imgOnError(item, imgIndex)"
+                  @error="imgOnError(item, imgIndex)"
+                />
+              </div>
+            </template>
+            <span
+              class="iconLabel"
+              :title="item.iconLabel"
+              v-else-if="item.iconLabel"
+              v-text="item.iconLabel"
+            ></span>
+            <i
+              v-else
+              :class="[
+                item.icon
+                  ? item.icon
+                  : lIndex === 0
+                  ? 'vapfont vap-top_icon4'
+                  : item.last
+                  ? 'vapfont vap-gou'
+                  : 'vapfont vap-hetong',
+              ]"
+            ></i>
+          </div>
+          <div class="r" :class="item.headportraitLh ? `r${item.headportraitLh}` : null">
+            <h2 :class="{ isFinished: item.last }" v-if="item.title">{{ item.title }}</h2>
+            <div
+              class="userInfoBox"
+              :class="{ sameLineTime: item.sameLineTime }"
+              v-for="(infoItem, iIndex) in item.handlerInfo"
+              :key="iIndex"
+            >
+              <div class="nameBox">
+                <span class="prefix" v-show="infoItem.prefix">{{ infoItem.prefix }}</span>
+                <span class="name" v-show="infoItem.name">{{ infoItem.name }}</span>
+                <span class="post" v-show="infoItem.post">{{ infoItem.post }}</span>
+                <i :class="infoItem.icon" v-if="infoItem.icon"></i>
+                <span
+                  class="state"
+                  :style="{
+                    color: infoItem.approvalTypeColor,
+                  }"
+                  >{{ infoItem.approvalType }}</span
+                >
+              </div>
               <span
-                class="state"
+                class="time"
                 :style="{
-                  color: infoItem.approvalTypeColor,
+                  color: infoItem.timeColor,
                 }"
-                >{{ infoItem.approvalType }}</span
+                >{{ infoItem.time }}</span
               >
             </div>
-            <span
-              class="time"
-              :style="{
-                color: infoItem.timeColor,
-              }"
-              >{{ infoItem.time }}</span
+            <div
+              class="content"
+              :class="{ contentVisible: item.show && item.haveBtn }"
+              v-if="!item.last && item.desc"
             >
-          </div>
-          <div
-            class="content"
-            :class="{ contentVisible: item.show && item.haveBtn }"
-            v-if="!item.last && item.desc"
-          >
-            <p class="main" :keyindex="lIndex + '-' + index" ref="fillText">
-              {{ item.desc }}
-            </p>
-            <span class="showBtn" v-if="item.haveBtn" @click="showContent(item)">
-              {{ item.show ? "收起" : "展开" }}
-            </span>
-          </div>
-          <div class="markInfo" v-if="item.mark">
-            <span class="msg" :style="{ color: item.markColor }">{{ item.mark }}</span>
+              <p
+                class="prefix"
+                :style="{
+                  color: item.descPrefixColor,
+                }"
+              >
+                {{ item.descPrefix?item.descPrefix:"备注说明" }}：
+              </p>
+              <p
+                class="main"
+                :keyindex="sIndex + '-' + lIndex + '-' + index"
+                ref="fillText"
+                :style="{
+                  color: item.descColor,
+                }"
+              >
+                {{ item.desc }}
+              </p>
+              <span class="showBtn" v-if="item.haveBtn" @click="showContent(item)">
+                {{ item.show ? "收起" : "展开" }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -97,7 +136,7 @@ export default {
     },
     maxRow: {
       type: Number,
-      default: 2,
+      default: 5,
     },
     overVisible: {
       type: Boolean,
@@ -130,11 +169,11 @@ export default {
     formatDom() {
       const fliterTextDom = this.$refs.fillText;
       if (!fliterTextDom) return;
-      const compareH = this.maxRow * 22;
+      const compareH = this.maxRow * 20;
       fliterTextDom.forEach((item) => {
         const key = item.getAttribute("keyindex").split("-");
         const io = item.scrollHeight > compareH;
-        let stepList = this.stepList[key[0]][key[1]];
+        let stepList = this.stepList[key[0]].list[key[1]][key[2]];
         const headportrait = stepList.headportrait;
         if (headportrait && !Array.isArray(headportrait)) {
           throw "headportrait muse be of Array type";
@@ -152,8 +191,8 @@ export default {
       });
     },
     initRowText(dom, key) {
-      let current = this.stepList[key[0]][key[1]];
-      const compareH = this.maxRow * 22;
+      let current = this.stepList[key[0]].list[key[1]][key[2]];
+      const compareH = this.maxRow * 20;
       const desc = current.desc;
       if (dom.scrollHeight > compareH) {
         current.lh--;
@@ -193,27 +232,34 @@ export default {
     formatData() {
       //格式化参数
       let stepList = this.stepList;
-      this.overVisible &&
-        stepList.length > 0 &&
-        stepList.push([
-          {
-            title: "结束",
-            handlerInfo: [],
-            last: true,
-          },
-        ]);
-      stepList = stepList.map((list) => {
-        let rs = list;
-        if (list.length > 1) {
-          let headportrait = [];
-          rs.forEach((item) => {
-            Array.isArray(item.headportrait) && headportrait.push(...item.headportrait);
-          });
-          rs = rs.map((item, index) => {
-            item.headportraitLh = headportrait.length;
-            item.headportrait = index === 0 ? headportrait : null;
-          });
-        }
+      // console.log(stepList);
+
+      stepList = stepList.map((sItem) => {
+        let { list } = sItem;
+        this.overVisible &&
+          list.length > 0 &&
+          list.push([
+            {
+              title: "结束",
+              handlerInfo: [],
+              last: true,
+            },
+          ]);
+        console.log(sItem);
+        list = list.map((c) => {
+          if (c.length > 0) {
+            let headportrait = [];
+            c.forEach((item) => {
+              Array.isArray(item.headportrait) && headportrait.push(...item.headportrait);
+            });
+            c = c.map((item, index) => {
+              item.headportraitLh = headportrait.length;
+              item.headportrait = index === 0 ? headportrait : null;
+            });
+          }
+          return c;
+        });
+        return list;
       });
       this.$nextTick(() => {
         this.formatDom();

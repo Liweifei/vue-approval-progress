@@ -10,266 +10,313 @@ $lineColor: #dee3f7;
 .vue-approval-progress {
   position: relative;
   min-width: 460px;
-  padding: 0 40px;
+  padding: 20px 20px 0;
   box-sizing: border-box;
   white-space: normal !important;
 
-  .stepItem {
+  .stepList {
     float: left;
     width: 100%;
-    position: relative;
-    padding-bottom: 30px;
-    background: #fff;
-
-    &:not(:last-child) {
-      &::after {
-        content: "";
-        position: absolute;
-        width: 2px;
-        height: calc(100% - 48px);
-        top: 44px;
-        left: 19px;
-        background: $lineColor;
-        z-index: 1;
-      }
-    }
-    .itemBox {
+    
+    .markInfo {
       float: left;
       width: 100%;
       text-align: left;
+      margin-bottom: 20px;
+      position: relative;
+      line-height: 1;
 
-      .iconBox {
-        float: left;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 1px solid rgba(75, 125, 246, 0.8);
-        text-align: center;
-        background: rgba(75, 125, 246, 0.15);
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        border-top: 1px dashed #e6ebf9;
+        position: absolute;
+        left: 0;
+        top: 50%;
+      }
+
+      .msg {
+        display: inline;
+        padding-right: 10px;
+        color: #ffae3c;
+        font-size: 14px;
+        background: #fff;
+        font-weight: 500;
         position: relative;
-        box-sizing: border-box;
+        z-index: 2;
+      }
+    }
 
-        i {
-          font-size: 18px;
-          color: $mainColor;
-          line-height: 38px;
-        }
-        .imgBox {
-          width: 100%;
-          height: 100%;
+    .stepItem {
+      float: left;
+      width: 100%;
+      position: relative;
+      padding-bottom: 30px;
+      background: #fff;
+
+      &:not(:last-child) {
+        &::after {
+          content: "";
           position: absolute;
-          left: 0;
-          top: 0;
-          background-color: #fff;
-          border-radius: 50%;
-          overflow: hidden;
+          width: 2px;
+          height: calc(100% - 48px);
+          top: 42px;
+          left: 17px;
+          background: $lineColor;
+          z-index: 1;
+        }
+      }
+      .itemBox {
+        float: left;
+        width: 100%;
+        text-align: left;
 
-          @for $i from 1 through 20 {
-            &:nth-child(#{$i}) {
-              margin-left: #{$i * 8-8}px;
-            }
+        .iconBox {
+          float: left;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          border: 1px solid rgba(75, 125, 246, 0.8);
+          text-align: center;
+          background: rgba(75, 125, 246, 0.15);
+          position: relative;
+          box-sizing: border-box;
+
+          i {
+            font-size: 18px;
+            color: $mainColor;
+            line-height: 38px;
           }
-          img {
+          .imgBox {
             width: 100%;
             height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #fff;
+            border-radius: 50%;
+            overflow: hidden;
+
+            @for $i from 1 through 20 {
+              &:nth-child(#{$i}) {
+                margin-left: #{$i * 8-8}px;
+              }
+            }
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .iconLabel {
+            display: inline-block;
+            width: 100%;
+            font-size: 18px;
+            color: $mainColor;
+            line-height: 38px;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
         }
-        .iconLabel {
-          display: inline-block;
-          width: 100%;
-          font-size: 18px;
-          color: $mainColor;
-          line-height: 38px;
-          font-weight: bold;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }
-      }
-      .isImg {
-        border: none;
+        .isImg {
+          border: none;
 
-        .imgBox {
-          border: 1px solid #f8f9fd;
-          box-sizing: border-box;
+          .imgBox {
+            border: 1px solid #f8f9fd;
+            box-sizing: border-box;
+            box-shadow: 0px 1px 3px #cacedb;
+          }
         }
-      }
-      .r {
-        float: left;
-        width: calc(100% - 40px);
-        padding: 0 12px;
-        box-sizing: border-box;
-
-        h2 {
-          width: 100%;
-          margin-top: 6px;
-          font-size: 14px;
-          font-weight: bold;
-          color: #333333;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-        }
-        .isFinished {
-          margin-top: 13px;
-        }
-        .userInfoBox {
+        .r {
           float: left;
-          width: 100%;
-          font-size: 14px;
-          color: #333333;
-          margin-top: 14px;
+          width: calc(100% - 36px);
+          padding: 0 12px;
+          box-sizing: border-box;
 
-          .nameBox {
-            float: left;
-            width: calc(100% - 134px); //more 20px gap
+          h2 {
+            width: 100%;
+            margin-top: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333333;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
-
-            .roleName {
-              padding-right: 10px;
-              margin-right: 10px;
-              border-right: 1px solid #333333;
-            }
-            i {
-              color: $mainColor;
-              font-size: 14px;
-              margin-left: 10px;
-            }
-            .state {
-              font-size: 14px;
-              color: #07c264;
-              margin-left: 12px;
-              font-weight: bold;
-            }
+            line-height: 1;
           }
-          .time {
-            width: 134px;
-            float: right;
-            font-size: 14px;
-            color: #999999;
-            white-space: nowrap;
+          .isFinished {
+            margin-top: 13px;
+            font-weight: normal;
           }
-        }
-        .content {
-          float: left;
-          width: 100%;
-          font-size: 12px;
-          color: #8B8E94;
-          margin-top: 14px;
-          position: relative;
-          word-break: break-all;
-
-          .main {
-            line-height: 22px;
-          }
-          .showBtn {
-            cursor: pointer;
-            color: $mainColor;
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            z-index: 2;
-            line-height: 22px;
-          }
-        }
-        .contentVisible {
-          // padding-bottom: 20px;
-          // border-bottom: 1px dashed #e6ebf9;
-
-          // .showBtn {
-          //   bottom: 20px;
-          // }
-        }
-        .markInfo {
-          float: left;
-          width: 100%;
-          text-align: center;
-          margin-top: 30px;
-          position: relative;
-          line-height: 1;
-
-          &:before {
-            content: "";
-            display: inline-block;
+          .userInfoBox {
+            float: left;
             width: 100%;
-            height: 2px;
-            background: #e6ebf9;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            margin-top: -1px;
-          }
-
-          .msg {
-            display: inline;
-            padding: 0 20px;
-            color: #ffae3c;
             font-size: 14px;
-            background: #fff;
+            color: #333333;
+            margin-bottom: 10px;
+            line-height: 1;
+
+            &:first-child{
+              margin-top: 8px;
+            }
+            .nameBox {
+              float: left;
+              width: 100%;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+
+              .prefix {
+                padding-right: 10px;
+                margin-right: 10px;
+                border-right: 1px solid #666666;
+              }
+              .name{
+                font-weight: 600;
+              }
+              .post{
+                font-size: 12px;
+                color: #999999;
+                margin-left: 10px;
+              }
+              i {
+                color: $mainColor;
+                font-size: 14px;
+                margin-left: 10px;
+              }
+              .state {
+                font-size: 14px;
+                color: #07c264;
+                margin-left: 12px;
+                font-weight: 500;
+                float: right;
+              }
+            }
+            .time {
+              width: 100%;
+              float: right;
+              font-size: 12px;
+              color: #999999;
+              white-space: nowrap;
+              margin-top: 10px;
+            }
+          }
+          .sameLineTime{
+            .nameBox {
+              width: calc(100% - 134px); //more 20px gap
+
+              .state{
+                float: none;
+              }
+            }
+            .time {
+              width: 134px;
+              margin-top: 0;
+              text-align: right;
+            }
+          }
+          .content {
+            float: left;
+            width: 100%;
+            font-size: 14px;
+            color: #8b8e94;
             position: relative;
-            z-index: 2;
+            word-break: break-all;
+
+            .prefix{
+              float: left;
+              width: 70px;
+              line-height: 20px;
+              color: #424675;
+              font-weight: 600;
+            }
+            .main {
+              float: left;
+              line-height: 20px;
+              width: calc(100% - 70px);
+              color: #424675;
+              font-weight: normal;
+            }
+            .showBtn {
+              cursor: pointer;
+              color: $mainColor;
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              z-index: 2;
+              line-height: 20px;
+            }
+          }
+          .contentVisible {
+            // padding-bottom: 20px;
+            // border-bottom: 1px dashed #e6ebf9;
+
+            // .showBtn {
+            //   bottom: 20px;
+            // }
           }
         }
-      }
-      @for $i from 2 through 20 {
-        .r#{$i} {
-          padding-left: #{$i * 8+4}px; //12-8=4
-        }
-      }
-
-      //group
-      & + .itemBox {
-        margin-top: 4px;
-
-        .r h2 {
-          display: none;
-        }
-        .iconBox {
-          width: 8px;
-          height: 8px;
-          margin: 16px 15px 0 15px;
-          border-radius: 50%;
-          background: $lineColor;
-          border-color: $lineColor;
-          box-sizing: content-box;
-
-          &::before {
-            content: "";
-            position: absolute;
-            width: 2px;
-            height: 4px;
-            bottom: 100%;
-            left: 19px;
-            background: #fff;
-            z-index: 1;
+        @for $i from 2 through 20 {
+          .r#{$i} {
+            padding-left: #{$i * 8+4}px; //12-8=4
           }
+        }
 
-          i {
+        //group
+        & + .itemBox {
+          margin-top: 12px;
+
+          .r h2 {
             display: none;
           }
+          .iconBox {
+            width: 8px;
+            height: 8px;
+            margin: 16px 13px 0 13px;
+            border-radius: 50%;
+            background: $lineColor;
+            border-color: $lineColor;
+            box-sizing: content-box;
+
+            &::before {
+              content: "";
+              position: absolute;
+              width: 2px;
+              height: 4px;
+              bottom: 100%;
+              left: 17px;
+              background: #fff;
+              z-index: 1;
+            }
+
+            i {
+              display: none;
+            }
+          }
         }
       }
     }
-  }
 
-  .mulStep {
-    .itemBox:not(:last-child) {
-      .content {
-        padding-bottom: 20px;
-        border-bottom: 1px dashed #e6ebf9;
+    .mulStep {
+      .itemBox:not(:last-child) {
+        .content {
+          padding-bottom: 20px;
+          border-bottom: 1px dashed #e6ebf9;
 
-        .showBtn{
-          bottom: 20px;
+          .showBtn {
+            bottom: 20px;
+          }
         }
       }
-    }
-    .noMsg{
-      .userInfoBox:last-child{
-        padding-bottom: 30px;
-        margin-bottom: 10px;
-        border-bottom: 1px dashed #e6ebf9;
+      .noMsg {
+        .userInfoBox:last-child {
+          padding-bottom: 30px;
+          margin-bottom: 10px;
+          border-bottom: 1px dashed #e6ebf9;
+        }
       }
     }
   }
