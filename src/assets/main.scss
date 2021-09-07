@@ -313,7 +313,8 @@ $lineColor: #dee3f7;
         .userInfoBox,
         h2,
         .time,
-        .state {
+        .state,
+        .post{
           color: $disabledC !important;
         }
         .prefix {

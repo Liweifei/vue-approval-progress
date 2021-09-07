@@ -12,7 +12,10 @@
       >
         <div
           class="itemBox"
-          :class="[!item.last && !item.desc ? 'noMsg' : null, item.disabled?'disabled':null]"
+          :class="[
+            !item.last && !item.desc ? 'noMsg' : null,
+            item.disabled ? 'disabled' : null,
+          ]"
           v-for="(item, index) in list"
           :key="index"
         >
@@ -65,7 +68,14 @@
             >
               <div class="nameBox">
                 <span class="prefix" v-show="infoItem.prefix">{{ infoItem.prefix }}</span>
-                <span class="name" v-show="infoItem.name">{{ infoItem.name }}</span>
+                <span
+                  class="name"
+                  :style="{
+                    color: infoItem.nameColor,
+                  }"
+                  v-show="infoItem.name"
+                  >{{ infoItem.name }}</span
+                >
                 <span class="post" v-show="infoItem.post">{{ infoItem.post }}</span>
                 <i :class="infoItem.icon" v-if="infoItem.icon"></i>
                 <span

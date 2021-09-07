@@ -1,4 +1,4 @@
-## vue-approval-progress(当前版本 V2.0.3)
+## vue-approval-progress(当前版本 V2.0.4)
 
 一款高效、简洁、功能丰富的审批进度流程显示 pc 端插件
 
@@ -43,9 +43,9 @@ Vue2.x
                     approvalType: "",
                   },
                 ],
-                descPrefixColor:"red",
-                descColor:"red",
-                descPrefix:"发起说明",
+                descPrefixColor: "red",
+                descColor: "red",
+                descPrefix: "发起说明",
                 desc:
                   "转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！",
               },
@@ -72,7 +72,7 @@ Vue2.x
                     approvalType: "同意",
                   },
                 ],
-                descPrefix:"审批意见",
+                descPrefix: "审批意见",
                 desc:
                   "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccdddddddddddddddddd",
               },
@@ -93,7 +93,7 @@ Vue2.x
                     stepList: "red",
                   },
                 ],
-                descPrefix:"审批意见",
+                descPrefix: "审批意见",
                 desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
               },
               {
@@ -111,8 +111,8 @@ Vue2.x
                     stepList: "red",
                   },
                 ],
-                descPrefix:"审批意见",
-                desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+                descPrefix: "审批意见",
+                desc: "",
               },
             ],
             [
@@ -133,7 +133,7 @@ Vue2.x
                     approvalType: "同意",
                   },
                 ],
-                descPrefix:"审批意见",
+                descPrefix: "审批意见",
                 desc: "同意同意",
               },
               {
@@ -149,17 +149,36 @@ Vue2.x
                     stepList: "red",
                   },
                 ],
-                descPrefix:"审批意见",
-                desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+                descPrefix: "审批意见",
+                desc: "",
                 mark: "第2次审批",
-                markColor: "red",
+              },
+            ],
+            [
+              {
+                title: "",
+                handlerInfo: [
+                  {
+                    name: "发起人撤回",
+                    nameColor: "#FF4343",
+                    prefix: "",
+                    time: "2021-03-15  20:42:00",
+                    approvalType: "",
+                    approvalTypeColor: "",
+                    timeColor: "",
+                    stepList: "",
+                  },
+                ],
+                descPrefix: "",
+                desc: "",
+                mark: "",
               },
             ],
             [
               {
                 title: "抄送人",
-                sameLineTime:true,
-                disabled:true,
+                sameLineTime: true,
+                disabled: true,
                 // icon: "vapfont vap-gou2",
                 // headportrait: ["https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png"],
                 handlerInfo: [
@@ -180,7 +199,7 @@ Vue2.x
                     // icon: "vapfont vap-gou",
                   },
                 ],
-                descPrefix:"审批意见",
+                descPrefix: "审批意见",
                 desc: "",
               },
             ],
@@ -237,6 +256,7 @@ Vue2.x
 | ----------------- | ------ | ------------------------ | -------- | ------- |
 | prefix            | String | 处理人文字前缀           |          |         |
 | name              | String | 处理人文字说明           |          |         |
+| nameColor         | String | 处理人文字颜色           |          |         |
 | post              | String | 处理人职务               |          |         |
 | time              | String | 处理时间                 |          |         |
 | timeColor         | String | 处理时间文字颜色         | true     | #999999 |
