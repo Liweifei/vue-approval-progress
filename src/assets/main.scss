@@ -17,7 +17,13 @@ $lineColor: #dee3f7;
   .stepList {
     float: left;
     width: 100%;
-    
+
+    &:first-child{
+      .markInfo:before {
+        display: none;
+      }
+    }
+
     .markInfo {
       float: left;
       width: 100%;
@@ -159,7 +165,7 @@ $lineColor: #dee3f7;
             margin-bottom: 10px;
             line-height: 1;
 
-            &:first-child{
+            &:first-child {
               margin-top: 8px;
             }
             .nameBox {
@@ -174,10 +180,10 @@ $lineColor: #dee3f7;
                 margin-right: 10px;
                 border-right: 1px solid #666666;
               }
-              .name{
+              .name {
                 font-weight: 600;
               }
-              .post{
+              .post {
                 font-size: 12px;
                 color: #999999;
                 margin-left: 10px;
@@ -204,11 +210,11 @@ $lineColor: #dee3f7;
               margin-top: 10px;
             }
           }
-          .sameLineTime{
+          .sameLineTime {
             .nameBox {
               width: calc(100% - 134px); //more 20px gap
 
-              .state{
+              .state {
                 float: none;
               }
             }
@@ -226,7 +232,7 @@ $lineColor: #dee3f7;
             position: relative;
             word-break: break-all;
 
-            .prefix{
+            .prefix {
               float: left;
               width: 70px;
               line-height: 20px;
@@ -259,6 +265,7 @@ $lineColor: #dee3f7;
             // }
           }
         }
+
         @for $i from 2 through 20 {
           .r#{$i} {
             padding-left: #{$i * 8+4}px; //12-8=4
@@ -275,7 +282,7 @@ $lineColor: #dee3f7;
           .iconBox {
             width: 8px;
             height: 8px;
-            margin: 16px 13px 0 13px;
+            margin: 12px 13px 0 13px;
             border-radius: 50%;
             background: $lineColor;
             border-color: $lineColor;
@@ -298,6 +305,21 @@ $lineColor: #dee3f7;
           }
         }
       }
+
+      $disabledC: #c1c3cb;
+      .disabled .r {
+        color: $disabledC !important;
+
+        .userInfoBox,
+        h2,
+        .time,
+        .state {
+          color: $disabledC !important;
+        }
+        .prefix {
+          border-color: $disabledC !important;
+        }
+      }
     }
 
     .mulStep {
@@ -313,9 +335,9 @@ $lineColor: #dee3f7;
       }
       .noMsg {
         .userInfoBox:last-child {
-          padding-bottom: 30px;
-          margin-bottom: 10px;
-          border-bottom: 1px dashed #e6ebf9;
+          // padding-bottom: 30px;
+          // margin-bottom: 10px;
+          // border-bottom: 1px dashed #e6ebf9;
         }
       }
     }

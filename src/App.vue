@@ -11,7 +11,7 @@ export default {
     return {
       dataList: [
         {
-          title: "x",
+          title: "sx",
           list: [
             [
               {
@@ -38,7 +38,7 @@ export default {
           ],
         },
         {
-          title: "",
+          title: "gf",
           list: [
             [
               {
@@ -97,7 +97,7 @@ export default {
                   },
                 ],
                 descPrefix:"审批意见",
-                desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+                desc: "",
               },
             ],
             [
@@ -135,7 +135,7 @@ export default {
                   },
                 ],
                 descPrefix:"审批意见",
-                desc: "该员工任职UI设计师，态度认真，故本人同意转正。",
+                desc: "",
                 mark: "第2次审批",
                 markColor: "red",
               },
@@ -144,6 +144,7 @@ export default {
               {
                 title: "抄送人",
                 sameLineTime:true,
+                disabled:true,
                 // icon: "vapfont vap-gou2",
                 // headportrait: ["https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png"],
                 handlerInfo: [
@@ -160,7 +161,7 @@ export default {
                     post: "副总裁",
                     // prefix: "副总裁",
                     time: "2021-03-15  20:42:00",
-                    // approvalType: "抄送",
+                    approvalType: "抄送",
                     // icon: "vapfont vap-gou",
                   },
                 ],

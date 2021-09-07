@@ -1,8 +1,8 @@
 <template>
   <div class="vue-approval-progress">
     <div class="stepList" v-for="(stepList, sIndex) in stepList" :key="'s' + sIndex">
-      <div class="markInfo">
-        <span class="msg">第{{ sIndex + 1 }}次审批</span>
+      <div class="markInfo" v-if="stepList.title">
+        <span class="msg">{{ stepList.title }}</span>
       </div>
       <div
         class="stepItem"
@@ -12,7 +12,7 @@
       >
         <div
           class="itemBox"
-          :class="!item.last && !item.desc ? 'noMsg' : null"
+          :class="[!item.last && !item.desc ? 'noMsg' : null, item.disabled?'disabled':null]"
           v-for="(item, index) in list"
           :key="index"
         >
@@ -95,7 +95,7 @@
                   color: item.descPrefixColor,
                 }"
               >
-                {{ item.descPrefix?item.descPrefix:"备注说明" }}：
+                {{ item.descPrefix ? item.descPrefix : "备注说明" }}：
               </p>
               <p
                 class="main"

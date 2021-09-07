@@ -1,4 +1,4 @@
-## vue-approval-progress(当前版本 V2.0.0)
+## vue-approval-progress(当前版本 V2.0.3)
 
 一款高效、简洁、功能丰富的审批进度流程显示 pc 端插件
 
@@ -26,7 +26,7 @@ Vue2.x
     return {
       dataList: [
         {
-          title: "x",
+          title: "sx",
           list: [
             [
               {
@@ -53,7 +53,7 @@ Vue2.x
           ],
         },
         {
-          title: "",
+          title: "gf",
           list: [
             [
               {
@@ -159,6 +159,7 @@ Vue2.x
               {
                 title: "抄送人",
                 sameLineTime:true,
+                disabled:true,
                 // icon: "vapfont vap-gou2",
                 // headportrait: ["https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png"],
                 handlerInfo: [
@@ -175,7 +176,7 @@ Vue2.x
                     post: "副总裁",
                     // prefix: "副总裁",
                     time: "2021-03-15  20:42:00",
-                    // approvalType: "抄送",
+                    approvalType: "抄送",
                     // icon: "vapfont vap-gou",
                   },
                 ],
@@ -220,6 +221,7 @@ Vue2.x
 | --------------- | ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------- |
 | title           | String | 当条数据的 title（注意有多个处理人的情况不展示，参考'或签/会签'样式）                                        |          |                                                    |
 | sameLineTime    | String | 当条数据的时间是否和用户信息展示在同一行                                                                     |          |                                                    |
+| disabled        | String | 当前数据字体等置灰                                                                                           |          |                                                    |
 | descPrefix      | String | 当条数据的文字说明前缀                                                                                       | true     | 备注说明                                           |
 | descPrefixColor | String | 当条数据的文字说明前缀字体颜色                                                                               | true     | #424675                                            |
 | desc            | String | 当条数据的文字说明展示                                                                                       |          |
