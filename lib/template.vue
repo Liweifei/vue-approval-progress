@@ -88,6 +88,7 @@
               </div>
               <span
                 class="time"
+                v-show="infoItem.time"
                 :style="{
                   color: infoItem.timeColor,
                 }"
@@ -242,8 +243,6 @@ export default {
     formatData() {
       //格式化参数
       let stepList = this.stepList;
-      // console.log(stepList);
-
       stepList = stepList.map((sItem) => {
         let { list } = sItem;
         this.overVisible &&
@@ -255,7 +254,6 @@ export default {
               last: true,
             },
           ]);
-        console.log(sItem);
         list = list.map((c) => {
           if (c.length > 0) {
             let headportrait = [];
