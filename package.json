@@ -1,7 +1,7 @@
 {
   "name": "vue-approval-progress",
   "description": "一款优秀的审批进度流程显示插件",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "author": "Liweifei <1195669615@qq.com>",
   "license": "MIT",
   "private": false,

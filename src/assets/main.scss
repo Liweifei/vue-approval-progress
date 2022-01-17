@@ -30,7 +30,7 @@ $lineColor: #dee3f7;
       text-align: left;
       margin-bottom: 20px;
       position: relative;
-      line-height: 1;
+      line-height: normal;
 
       &:before {
         content: "";
@@ -151,7 +151,7 @@ $lineColor: #dee3f7;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
-            line-height: 1;
+            line-height: normal;
           }
           .isFinished {
             margin-top: 13px;
@@ -163,7 +163,7 @@ $lineColor: #dee3f7;
             font-size: 14px;
             color: #333333;
             margin-bottom: 10px;
-            line-height: 1;
+            line-height: normal;
 
             &:first-child {
               margin-top: 8px;
@@ -276,13 +276,14 @@ $lineColor: #dee3f7;
             display: none;
           }
           .iconBox {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             margin: 12px 13px 0 13px;
             border-radius: 50%;
             background: $lineColor;
             border-color: $lineColor;
             box-sizing: content-box;
+            border: none;
 
             &::before {
               content: "";
