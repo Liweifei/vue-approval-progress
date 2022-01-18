@@ -1,7 +1,7 @@
 {
   "name": "vue-approval-progress",
   "description": "一款优秀的审批进度流程显示插件",
-  "version": "2.0.6",
+  "version": "3.0.0",
   "author": "Liweifei <1195669615@qq.com>",
   "license": "MIT",
   "private": false,
@@ -12,10 +12,6 @@
   },
   "dependencies": {
     "vue": "^2.5.11"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Liweifei/vue-approval-progress.git"
   },
   "keywords": [
     "vue",

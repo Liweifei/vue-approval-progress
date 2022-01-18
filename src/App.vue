@@ -1,6 +1,10 @@
 <template>
   <div class="app">
-    <vue-approval-progress :data-list="dataList"></vue-approval-progress>
+    <vue-approval-progress
+      :data-list="dataList"
+      :over-visible="false"
+      :over-disabled="true"
+    ></vue-approval-progress>
   </div>
 </template>
 
@@ -11,14 +15,15 @@ export default {
     return {
       dataList: [
         {
-          title: "sx",
+          title: "第二次审批",
           list: [
             [
               {
-                title: "发起人",
+                // title: "发起人",
                 icon: "vapfont vap-top_icon4",
                 headportrait: ["https://v3.cn.vuejs.org/logos.png"],
                 iconLabel: "发",
+                className:"classname",
                 handlerInfo: [
                   {
                     name: "xxx",
@@ -35,24 +40,23 @@ export default {
                   "转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！",
               },
             ],
-          ],
-        },
-        {
-          title: "gf",
-          list: [
             [
               {
+                title: "会签",
+              },
+              {
                 title: "",
+                className:"classname1",
+                sameLineTime: true,
                 headportrait: [
-                  "http://wework.qpic.cn/bizmail/yEeLOMJgibZwIUJQXyfdyAaLFIgVjFUzl78HdIJ2eFelFk3hMroghMQ/100",
-                  // "http://wework.qpic.cn/bizmail/wM9IumlQibQ6o3epyIZGh3P0VriargcE46pBYL82GqiauxJvF6TbQAgHw/100",
+                  "https://v3.cn.vuejs.org/logos.png",
                   // null,
                 ],
                 handlerInfo: [
                   {
                     name: "xxx",
                     prefix: "审批人",
-                    post: "部门主管",
+                    // post: "部门主管",
                     time: "2021-03-15  20:42:00",
                     approvalType: "同意",
                   },
@@ -63,9 +67,9 @@ export default {
               },
               {
                 title: "",
-                headportrait: [
-                  "http://wework.qpic.cn/bizmail/yEeLOMJgibZwIUJQXyfdyAaLFIgVjFUzl78HdIJ2eFelFk3hMroghMQ/100",
-                ],
+                className:"classname2",
+                sameLineTime: true,
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
                 handlerInfo: [
                   {
                     name: "xxx",
@@ -83,6 +87,7 @@ export default {
               },
               {
                 title: "",
+                sameLineTime: true,
                 headportrait: ["https://v3.cn.vuejs.org/logos.png"],
                 handlerInfo: [
                   {
@@ -97,20 +102,80 @@ export default {
                   },
                 ],
                 descPrefix: "审批意见",
-                desc: "",
+                desc:
+                  "该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。",
+              },
+            ],
+            [
+              { title: "抄送人", sameLineTime: true, disabled: true },
+              {
+                title: "",
+                sameLineTime: true,
+                disabled: true,
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                handlerInfo: [
+                  {
+                    name: "xx1",
+                    approvalType: "待抄送",
+                  },
+                ],
+              },
+              {
+                title: "",
+                sameLineTime: true,
+                disabled: true,
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                handlerInfo: [
+                  {
+                    name: "xx2",
+                    approvalType: "待抄送",
+                  },
+                ],
               },
             ],
             [
               {
-                title: "会签",
+                title: "结束",
+                last: true,
+                disabled: true,
+              },
+            ],
+          ],
+        },
+        {
+          title: "第一次审批",
+          list: [
+            [
+              {
+                // title: "发起人",
+                sameLineTime: true,
+                icon: "vapfont vap-top_icon4",
                 headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                iconLabel: "发",
                 handlerInfo: [
                   {
                     name: "xxx",
-                    prefix: "财务主管",
+                    prefix: "发起人",
+                    post: "UI设计师",
                     time: "2021-03-15  20:42:00",
-                    approvalType: "同意",
+                    approvalType: "",
                   },
+                ],
+                descPrefixColor: "red",
+                descColor: "red",
+                descPrefix: "发起说明",
+                desc:
+                  "转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！",
+              },
+            ],
+            [
+              {
+                title: "或签",
+              },
+              {
+                sameLineTime: true,
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                handlerInfo: [
                   {
                     name: "xxx",
                     prefix: "财务主管",
@@ -122,6 +187,7 @@ export default {
                 desc: "同意同意",
               },
               {
+                sameLineTime: true,
                 title: "",
                 handlerInfo: [
                   {
@@ -135,12 +201,13 @@ export default {
                   },
                 ],
                 descPrefix: "审批意见",
-                desc: "",
-                mark: "第2次审批",
+                desc: "考核不通过",
+                descColor: "red",
               },
             ],
             [
               {
+                sameLineTime: true,
                 title: "",
                 handlerInfo: [
                   {
@@ -156,36 +223,12 @@ export default {
                 ],
                 descPrefix: "",
                 desc: "",
-                mark: "",
               },
             ],
             [
               {
-                title: "抄送人",
-                sameLineTime: true,
-                disabled: true,
-                // icon: "vapfont vap-gou2",
-                // headportrait: ["https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png"],
-                handlerInfo: [
-                  {
-                    name: "xxx",
-                    post: "总裁",
-                    // prefix: "总裁",
-                    time: "2021-03-15  20:42:00",
-                    // approvalType: "",
-                    // icon: "vapfont vap-gou2",
-                  },
-                  {
-                    name: "xxx",
-                    post: "副总裁",
-                    // prefix: "副总裁",
-                    time: "2021-03-15  20:42:00",
-                    approvalType: "抄送",
-                    // icon: "vapfont vap-gou",
-                  },
-                ],
-                descPrefix: "审批意见",
-                desc: "",
+                title: "结束",
+                last: true,
               },
             ],
           ],

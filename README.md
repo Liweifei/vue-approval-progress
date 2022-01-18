@@ -1,4 +1,4 @@
-## vue-approval-progress(当前版本 V2.0.6)
+## vue-approval-progress(当前版本 V3.0.0)
 
 一款高效、简洁、功能丰富的审批进度流程显示 pc 端插件
 
@@ -15,25 +15,19 @@ Vue2.x
 	import vap from "vue-approval-progress";
 	Vue.use(vap)
 
-```
-
-## 示例
-
-```javascript
-	<vue-approval-progress :data-list="dataList"></vue-approval-progress>
-
 	data() {
     return {
       dataList: [
         {
-          title: "sx",
+          title: "第二次审批",
           list: [
             [
               {
-                title: "发起人",
+                // title: "发起人",
                 icon: "vapfont vap-top_icon4",
                 headportrait: ["https://v3.cn.vuejs.org/logos.png"],
                 iconLabel: "发",
+                className:"classname",
                 handlerInfo: [
                   {
                     name: "xxx",
@@ -50,24 +44,23 @@ Vue2.x
                   "转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！",
               },
             ],
-          ],
-        },
-        {
-          title: "gf",
-          list: [
             [
               {
+                title: "会签",
+              },
+              {
                 title: "",
+                className:"classname1",
+                sameLineTime: true,
                 headportrait: [
-                  "http://wework.qpic.cn/bizmail/yEeLOMJgibZwIUJQXyfdyAaLFIgVjFUzl78HdIJ2eFelFk3hMroghMQ/100",
-                  // "http://wework.qpic.cn/bizmail/wM9IumlQibQ6o3epyIZGh3P0VriargcE46pBYL82GqiauxJvF6TbQAgHw/100",
+                  "https://v3.cn.vuejs.org/logos.png",
                   // null,
                 ],
                 handlerInfo: [
                   {
                     name: "xxx",
                     prefix: "审批人",
-                    post: "部门主管",
+                    // post: "部门主管",
                     time: "2021-03-15  20:42:00",
                     approvalType: "同意",
                   },
@@ -78,9 +71,9 @@ Vue2.x
               },
               {
                 title: "",
-                headportrait: [
-                  "http://wework.qpic.cn/bizmail/yEeLOMJgibZwIUJQXyfdyAaLFIgVjFUzl78HdIJ2eFelFk3hMroghMQ/100",
-                ],
+                className:"classname2",
+                sameLineTime: true,
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
                 handlerInfo: [
                   {
                     name: "xxx",
@@ -98,6 +91,7 @@ Vue2.x
               },
               {
                 title: "",
+                sameLineTime: true,
                 headportrait: ["https://v3.cn.vuejs.org/logos.png"],
                 handlerInfo: [
                   {
@@ -112,20 +106,80 @@ Vue2.x
                   },
                 ],
                 descPrefix: "审批意见",
-                desc: "",
+                desc:
+                  "该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。该员工任职UI设计师，态度认真，故本人同意转正。",
+              },
+            ],
+            [
+              { title: "抄送人", sameLineTime: true, disabled: true },
+              {
+                title: "",
+                sameLineTime: true,
+                disabled: true,
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                handlerInfo: [
+                  {
+                    name: "xx1",
+                    approvalType: "待抄送",
+                  },
+                ],
+              },
+              {
+                title: "",
+                sameLineTime: true,
+                disabled: true,
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                handlerInfo: [
+                  {
+                    name: "xx2",
+                    approvalType: "待抄送",
+                  },
+                ],
               },
             ],
             [
               {
-                title: "会签",
+                title: "结束",
+                last: true,
+                disabled: true,
+              },
+            ],
+          ],
+        },
+        {
+          title: "第一次审批",
+          list: [
+            [
+              {
+                // title: "发起人",
+                sameLineTime: true,
+                icon: "vapfont vap-top_icon4",
                 headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                iconLabel: "发",
                 handlerInfo: [
                   {
                     name: "xxx",
-                    prefix: "财务主管",
+                    prefix: "发起人",
+                    post: "UI设计师",
                     time: "2021-03-15  20:42:00",
-                    approvalType: "同意",
+                    approvalType: "",
                   },
+                ],
+                descPrefixColor: "red",
+                descColor: "red",
+                descPrefix: "发起说明",
+                desc:
+                  "转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！转正时间到，申请转正，望领导批准！",
+              },
+            ],
+            [
+              {
+                title: "或签",
+              },
+              {
+                sameLineTime: true,
+                headportrait: ["https://v3.cn.vuejs.org/logos.png"],
+                handlerInfo: [
                   {
                     name: "xxx",
                     prefix: "财务主管",
@@ -137,6 +191,7 @@ Vue2.x
                 desc: "同意同意",
               },
               {
+                sameLineTime: true,
                 title: "",
                 handlerInfo: [
                   {
@@ -150,12 +205,13 @@ Vue2.x
                   },
                 ],
                 descPrefix: "审批意见",
-                desc: "",
-                mark: "第2次审批",
+                desc: "考核不通过",
+                descColor: "red",
               },
             ],
             [
               {
+                sameLineTime: true,
                 title: "",
                 handlerInfo: [
                   {
@@ -171,61 +227,50 @@ Vue2.x
                 ],
                 descPrefix: "",
                 desc: "",
-                mark: "",
               },
             ],
             [
               {
-                title: "抄送人",
-                sameLineTime: true,
-                disabled: true,
-                // icon: "vapfont vap-gou2",
-                // headportrait: ["https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png","https://v3.cn.vuejs.org/logos.png"],
-                handlerInfo: [
-                  {
-                    name: "xxx",
-                    post: "总裁",
-                    // prefix: "总裁",
-                    time: "2021-03-15  20:42:00",
-                    // approvalType: "",
-                    // icon: "vapfont vap-gou2",
-                  },
-                  {
-                    name: "xxx",
-                    post: "副总裁",
-                    // prefix: "副总裁",
-                    time: "2021-03-15  20:42:00",
-                    approvalType: "抄送",
-                    // icon: "vapfont vap-gou",
-                  },
-                ],
-                descPrefix: "审批意见",
-                desc: "",
+                title: "结束",
+                last: true,
               },
             ],
           ],
         },
       ],
     };
-  }
+  },
+```
+
+## 示例
+
+```javascript
+	<vue-approval-progress :data-list="dataList"></vue-approval-progress>
+
+
 
 ```
+
+## V3.x 版本 ui 效果图
+
+![效果图](./demo3.jpg)
+
+## V2.x 版本 ui 效果图(请使用 2.0.6)
+
+![效果图](./demo2.jpg)
 
 ## V1.x 版本 ui 效果图(请使用 1.1.0)
 
 ![效果图](./demo.jpg)
 
-## V2.x 版本 ui 效果图
-
-![效果图](./demo2.jpg)
-
 ## Attribute
 
-| 属性         | 类型    | 说明                     | 默认(默认值) | 是否必传 |
-| ------------ | ------- | ------------------------ | ------------ | -------- |
-| data-list    | Array   | 流程数据源(下方详细说明) | true([])     | FALSE    |
-| max-row      | Number  | 文字超过多少行显示省略号 | true(5)      | FALSE    |
-| over-visible | Boolean | 数据默认添加结束项       | true(true)   | FALSE    |
+| 属性          | 类型    | 说明                               | 默认(默认值) | 是否必传 |
+| ------------- | ------- | ---------------------------------- | ------------ | -------- |
+| data-list     | Array   | 流程数据源(下方详细说明)           | true([])     | false    |
+| max-row       | Number  | 文字超过多少行显示省略号           | true(5)      | false    |
+| over-visible  | Boolean | 数据默认添加结束项                 | true(true)   | false    |
+| over-disabled | Boolean | 数据默认添加结束项是否为不可用状态 | true(false)  | false    |
 
 ## data-list
 
@@ -239,6 +284,7 @@ Vue2.x
 | 属性            | 类型   | 说明                                                                                                         | 是否默认 | 默认值                                             |
 | --------------- | ------ | ------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------- |
 | title           | String | 当条数据的 title（注意有多个处理人的情况不展示，参考'或签/会签'样式）                                        |          |                                                    |
+| className       | String | 当条数据的 class                                                                                             |          |                                                    |
 | sameLineTime    | String | 当条数据的时间是否和用户信息展示在同一行                                                                     |          |                                                    |
 | disabled        | String | 当前数据字体等置灰                                                                                           |          |                                                    |
 | descPrefix      | String | 当条数据的文字说明前缀                                                                                       | true     | 备注说明                                           |

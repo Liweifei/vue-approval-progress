@@ -15,6 +15,7 @@
           :class="[
             !item.last && !item.desc ? 'noMsg' : null,
             item.disabled ? 'disabled' : null,
+            item.className
           ]"
           v-for="(item, index) in list"
           :key="index"
@@ -54,7 +55,7 @@
                   ? 'vapfont vap-top_icon4'
                   : item.last
                   ? 'vapfont vap-gou'
-                  : 'vapfont vap-hetong',
+                  : 'vapfont vap-top_icon4',
               ]"
             ></i>
           </div>
@@ -76,7 +77,7 @@
                   v-show="infoItem.name"
                   >{{ infoItem.name }}</span
                 >
-                <span class="post" v-show="infoItem.post">{{ infoItem.post }}</span>
+                <span class="post" v-show="infoItem.post" :title="infoItem.post">{{ infoItem.post }}</span>
                 <i :class="infoItem.icon" v-if="infoItem.icon"></i>
                 <span
                   class="state"
@@ -153,6 +154,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    overDisabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   watch: {
     dataList: {
@@ -167,6 +172,11 @@ export default {
       },
     },
     overVisible: {
+      handler() {
+        this.init();
+      },
+    },
+    overDisabled: {
       handler() {
         this.init();
       },
@@ -251,22 +261,23 @@ export default {
             {
               title: "结束",
               handlerInfo: [],
+              disabled:this.overDisabled,
               last: true,
             },
           ]);
-        list = list.map((c) => {
-          if (c.length > 0) {
-            let headportrait = [];
-            c.forEach((item) => {
-              Array.isArray(item.headportrait) && headportrait.push(...item.headportrait);
-            });
-            c = c.map((item, index) => {
-              item.headportraitLh = headportrait.length;
-              item.headportrait = index === 0 ? headportrait : null;
-            });
-          }
-          return c;
-        });
+        // list = list.map((c) => {
+        //   if (c.length > 0) {
+        //     let headportrait = [];
+        //     c.forEach((item) => {
+        //       Array.isArray(item.headportrait) && headportrait.push(...item.headportrait);
+        //     });
+        //     c = c.map((item, index) => {
+        //       item.headportraitLh = headportrait.length;
+        //       item.headportrait = index === 0 ? headportrait : null;
+        //     });
+        //   }
+        //   return c;
+        // });
         return list;
       });
       this.$nextTick(() => {

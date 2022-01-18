@@ -18,7 +18,7 @@ $lineColor: #dee3f7;
     float: left;
     width: 100%;
 
-    &:first-child{
+    &:first-child {
       .markInfo:before {
         display: none;
       }
@@ -58,17 +58,30 @@ $lineColor: #dee3f7;
       float: left;
       width: 100%;
       position: relative;
-      padding-bottom: 30px;
+      // padding-bottom: 30px;
+      padding-bottom: 20px;
       background: #fff;
 
+      // &:not(:last-child) {
+      //   &::after {
+      //     content: "";
+      //     position: absolute;
+      //     width: 2px;
+      //     height: calc(100% - 48px);
+      //     top: 42px;
+      //     left: 15px;
+      //     background: $lineColor;
+      //     z-index: 1;
+      //   }
+      // }
       &:not(:last-child) {
         &::after {
           content: "";
           position: absolute;
           width: 2px;
-          height: calc(100% - 48px);
-          top: 42px;
-          left: 17px;
+          height: calc(100% - 40px);
+          top: 36px;
+          left: 15px;
           background: $lineColor;
           z-index: 1;
         }
@@ -77,11 +90,13 @@ $lineColor: #dee3f7;
         float: left;
         width: 100%;
         text-align: left;
+        z-index: 2;
+        position: relative;
 
         .iconBox {
           float: left;
-          width: 36px;
-          height: 36px;
+          width: 32px;
+          height: 32px;
           border-radius: 50%;
           border: 1px solid rgba(75, 125, 246, 0.8);
           text-align: center;
@@ -92,7 +107,7 @@ $lineColor: #dee3f7;
           i {
             font-size: 18px;
             color: $mainColor;
-            line-height: 38px;
+            line-height: 30px;
           }
           .imgBox {
             width: 100%;
@@ -133,11 +148,12 @@ $lineColor: #dee3f7;
             border: 1px solid #f8f9fd;
             box-sizing: border-box;
             box-shadow: 0px 1px 3px #cacedb;
+            z-index: 2;
           }
         }
         .r {
           float: left;
-          width: calc(100% - 36px);
+          width: calc(100% - 32px);
           padding: 0 12px;
           box-sizing: border-box;
 
@@ -146,7 +162,7 @@ $lineColor: #dee3f7;
             margin-top: 8px;
             margin-bottom: 10px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             color: #333333;
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -154,7 +170,7 @@ $lineColor: #dee3f7;
             line-height: normal;
           }
           .isFinished {
-            margin-top: 13px;
+            margin-top: 8px;
             font-weight: normal;
           }
           .userInfoBox {
@@ -162,15 +178,17 @@ $lineColor: #dee3f7;
             width: 100%;
             font-size: 14px;
             color: #333333;
-            margin-bottom: 10px;
             line-height: normal;
 
+            &+.userInfoBox{
+              margin-top: 14px;
+            }
             &:first-child {
               margin-top: 8px;
             }
             .nameBox {
               float: left;
-              width: 100%;
+              // width: 100%;
               white-space: nowrap;
               text-overflow: ellipsis;
               overflow: hidden;
@@ -178,12 +196,15 @@ $lineColor: #dee3f7;
               .prefix {
                 padding-right: 10px;
                 margin-right: 10px;
-                border-right: 1px solid #666666;
+                border-right: 1px solid #A8A8A8;
               }
               .post {
                 font-size: 12px;
                 color: #999999;
                 margin-left: 10px;
+              }
+              .name{
+                font-weight: 500;
               }
               i {
                 color: $mainColor;
@@ -224,21 +245,23 @@ $lineColor: #dee3f7;
           .content {
             float: left;
             width: 100%;
-            font-size: 14px;
+            font-size: 12px;
+            margin-top: 14px;
             color: #8b8e94;
             position: relative;
             word-break: break-all;
 
             .prefix {
               float: left;
-              width: 70px;
+              width: 60px;
               line-height: 20px;
               color: #424675;
+              font-weight: 500;
             }
             .main {
               float: left;
               line-height: 20px;
-              width: calc(100% - 70px);
+              width: calc(100% - 60px);
               color: #424675;
               font-weight: normal;
             }
@@ -272,62 +295,98 @@ $lineColor: #dee3f7;
         & + .itemBox {
           margin-top: 12px;
 
-          .r h2 {
-            display: none;
-          }
-          .iconBox {
-            width: 10px;
-            height: 10px;
-            margin: 12px 13px 0 13px;
-            border-radius: 50%;
-            background: $lineColor;
-            border-color: $lineColor;
-            box-sizing: content-box;
-            border: none;
+          // .r h2 {
+          //   display: none;
+          // }
+          // .iconBox {
+          //   width: 10px;
+          //   height: 10px;
+          //   margin: 12px 13px 0 13px;
+          //   border-radius: 50%;
+          //   background: $lineColor;
+          //   border-color: $lineColor;
+          //   box-sizing: content-box;
+          //   border: none;
 
-            &::before {
-              content: "";
-              position: absolute;
-              width: 2px;
-              height: 4px;
-              bottom: 100%;
-              left: 17px;
-              background: #fff;
-              z-index: 1;
-            }
+          //   &::before {
+          //     content: "";
+          //     position: absolute;
+          //     width: 2px;
+          //     height: 4px;
+          //     bottom: 100%;
+          //     left: 17px;
+          //     background: #fff;
+          //     z-index: 1;
+          //   }
 
-            i {
-              display: none;
-            }
-          }
+          //   i {
+          //     display: none;
+          //   }
+          // }
         }
       }
 
       $disabledC: #c1c3cb;
-      .disabled .r {
-        color: $disabledC !important;
-
-        .userInfoBox,
-        h2,
-        .time,
-        .state,
-        .post{
+      .disabled {
+        .r {
           color: $disabledC !important;
+
+          .userInfoBox,
+          h2,
+          .time,
+          .state,
+          .post {
+            color: $disabledC !important;
+          }
+          .prefix {
+            border-color: $disabledC !important;
+          }
         }
-        .prefix {
+        .iconBox {
           border-color: $disabledC !important;
+
+          .imgBox{
+            &::after{
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              background-color: rgba(216, 216, 216, 0.7);
+            }
+          }
+
+          i {
+            color: $disabledC !important;
+          }
         }
       }
     }
 
     .mulStep {
-      .itemBox:not(:last-child) {
-        .content {
-          padding-bottom: 20px;
-          border-bottom: 1px dashed #e6ebf9;
+      .itemBox {
+        &:first-child {
+          .content{
+            margin-bottom: 8px;
+          }
+        }
+        &:nth-child(2) {
+          margin-top: 4px;
+        }
+        &:nth-child(n + 2) {
+          padding-left: 44px;
+          box-sizing: border-box;
+        }
+        &:not(:last-child) {
+          .content {
+            padding-bottom: 12px;
+            // padding-bottom: 20px;
+            border-bottom: 1px dashed #e6ebf9;
 
-          .showBtn {
-            bottom: 20px;
+            .showBtn {
+              bottom: 20px;
+            }
           }
         }
       }
