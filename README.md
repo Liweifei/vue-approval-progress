@@ -1,4 +1,4 @@
-## vue-approval-progress(当前版本 V3.0.1)
+## vue-approval-progress(当前版本 V3.0.2)
 
 一款高效、简洁、功能丰富的审批进度流程显示 pc 端插件
 
@@ -271,6 +271,7 @@ Vue2.x
 | max-row       | Number  | 文字超过多少行显示省略号           | true(5)      | false    |
 | over-visible  | Boolean | 数据默认添加结束项                 | true(true)   | false    |
 | over-disabled | Boolean | 数据默认添加结束项是否为不可用状态 | true(false)  | false    |
+| default-img   | String  | 默认图片                           | true         | false    |
 
 ## data-list
 

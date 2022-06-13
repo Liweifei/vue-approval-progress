@@ -158,6 +158,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    defaultImg: {
+      type: String,
+      default: "",
+    },
   },
   watch: {
     dataList: {
@@ -291,7 +295,7 @@ export default {
       item.backup = backup;
     },
     imgOnError(item, index) {
-      Array.isArray(item.headportrait) && item.headportrait.splice(index, 1, ImgBase64);
+      Array.isArray(item.headportrait) && item.headportrait.splice(index, 1, this.defaultImg || ImgBase64);
     },
   },
 };
