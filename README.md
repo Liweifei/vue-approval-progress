@@ -1,4 +1,4 @@
-## vue-approval-progress(当前版本 V3.0.3)
+## vue-approval-progress(当前版本 V3.0.4)
 
 一款高效、简洁、功能丰富的审批进度流程显示 pc 端插件
 

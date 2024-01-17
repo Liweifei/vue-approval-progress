@@ -1,7 +1,14 @@
 <template>
   <div class="vue-approval-progress">
-    <div class="stepList" v-for="(stepList, sIndex) in stepList" :key="'s' + sIndex">
-      <div class="markInfo" v-if="stepList.title">
+    <div
+      class="stepList"
+      v-for="(stepList, sIndex) in stepList"
+      :key="'s' + sIndex"
+    >
+      <div
+        class="markInfo"
+        v-if="stepList.title"
+      >
         <span class="msg">{{ stepList.title }}</span>
       </div>
       <div
@@ -15,7 +22,7 @@
           :class="[
             !item.last && !item.desc ? 'noMsg' : null,
             item.disabled ? 'disabled' : null,
-            item.className
+            item.className,
           ]"
           v-for="(item, index) in list"
           :key="index"
@@ -23,12 +30,14 @@
           <div
             class="iconBox"
             :class="{
-              isImg: Array.isArray(item.headportrait) && item.headportrait.length > 0,
+              isImg:
+                Array.isArray(item.headportrait) &&
+                item.headportrait.length > 0,
             }"
           >
-            <template
-              v-if="Array.isArray(item.headportrait) && item.headportrait.length > 0"
-            >
+            <template v-if="
+                Array.isArray(item.headportrait) && item.headportrait.length > 0
+              ">
               <div
                 class="imgBox"
                 v-for="(imgItem, imgIndex) in item.headportrait"
@@ -59,8 +68,16 @@
               ]"
             ></i>
           </div>
-          <div class="r" :class="item.headportraitLh ? `r${item.headportraitLh}` : null">
-            <h2 :class="{ isFinished: item.last }" v-if="item.title">{{ item.title }}</h2>
+          <div
+            class="r"
+            :class="item.headportraitLh ? `r${item.headportraitLh}` : null"
+          >
+            <h2
+              :class="{ isFinished: item.last }"
+              v-if="item.title"
+            >
+              {{ item.title }}
+            </h2>
             <div
               class="userInfoBox"
               :class="{ sameLineTime: item.sameLineTime }"
@@ -68,24 +85,34 @@
               :key="iIndex"
             >
               <div class="nameBox">
-                <span class="prefix" v-show="infoItem.prefix">{{ infoItem.prefix }}</span>
+                <span
+                  class="prefix"
+                  v-show="infoItem.prefix"
+                >{{
+                  infoItem.prefix
+                }}</span>
                 <span
                   class="name"
                   :style="{
                     color: infoItem.nameColor,
                   }"
                   v-show="infoItem.name"
-                  >{{ infoItem.name }}</span
-                >
-                <span class="post" v-show="infoItem.post" :title="infoItem.post">{{ infoItem.post }}</span>
-                <i :class="infoItem.icon" v-if="infoItem.icon"></i>
+                >{{ infoItem.name }}</span>
+                <span
+                  class="post"
+                  v-show="infoItem.post"
+                  :title="infoItem.post"
+                >{{ infoItem.post }}</span>
+                <i
+                  :class="infoItem.icon"
+                  v-if="infoItem.icon"
+                ></i>
                 <span
                   class="state"
                   :style="{
                     color: infoItem.approvalTypeColor,
                   }"
-                  >{{ infoItem.approvalType }}</span
-                >
+                >{{ infoItem.approvalType }}</span>
               </div>
               <span
                 class="time"
@@ -93,8 +120,7 @@
                 :style="{
                   color: infoItem.timeColor,
                 }"
-                >{{ infoItem.time }}</span
-              >
+              >{{ infoItem.time }}</span>
             </div>
             <div
               class="content"
@@ -106,9 +132,7 @@
                 :style="{
                   color: item.descPrefixColor,
                 }"
-              >
-                {{ item.descPrefix ? item.descPrefix : "备注说明" }}：
-              </p>
+              >{{ item.descPrefix ? item.descPrefix : "备注说明" }}：</p>
               <p
                 class="main"
                 :keyindex="sIndex + '-' + lIndex + '-' + index"
@@ -116,10 +140,12 @@
                 :style="{
                   color: item.descColor,
                 }"
+              >{{ item.desc }}</p>
+              <span
+                class="showBtn"
+                v-if="item.haveBtn"
+                @click="showContent(item)"
               >
-                {{ item.desc }}
-              </p>
-              <span class="showBtn" v-if="item.haveBtn" @click="showContent(item)">
                 {{ item.show ? "收起" : "展开" }}
               </span>
             </div>
@@ -265,7 +291,7 @@ export default {
             {
               title: "结束",
               handlerInfo: [],
-              disabled:this.overDisabled,
+              disabled: this.overDisabled,
               last: true,
             },
           ]);
@@ -295,7 +321,8 @@ export default {
       item.backup = backup;
     },
     imgOnError(item, index) {
-      Array.isArray(item.headportrait) && item.headportrait.splice(index, 1, this.defaultImg || ImgBase64);
+      Array.isArray(item.headportrait) &&
+        item.headportrait.splice(index, 1, this.defaultImg || ImgBase64);
     },
   },
 };
